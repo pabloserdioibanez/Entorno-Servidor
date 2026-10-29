@@ -358,11 +358,74 @@
     }
 
 
-?>
+    ?>
 
+    <h3>h) Un programa que conjugue un verbo terminado en -ar en tres tiempos verbales:</h3>
 
+    <h2>Conjugacion de verbos</h2> 
+    
+    <?php
 
+    // Creamos un array con diez verbos terminados en -ar
+    $verbos = array(
+        "amar", "cantar", "bailar", "estudiar", "trabajar",
+        "saltar", "hablar", "mirar", "comprar", "caminar"
+    );
 
+    // Guardamos las terminaciones del presente
+    $presente = array("o", "as", "a", "amos", "ais", "an");
+
+    // Guardamos las terminaciones del pasado
+    $pasado = array("e", "aste", "o", "amos", "asteis", "aron");
+
+    // Guardamos las terminaciones del futuro
+    $futuro = array("are", "aras", "ara", "aremos", "areis", "aran");
+
+    // Guardamos los pronombres personales
+    $personas = array(
+        "Yo", "Tu", "El/Ella", "Nosotros",
+        "Vosotros", "Ellos/Ellas"
+    );
+
+    // Funcion que muestra un verbo con sus terminaciones
+    function conjugar($raiz, $terminaciones, $personas) {
+
+        // Recorremos todas las terminaciones del tiempo verbal
+        for ($i = 0; $i < count($terminaciones); $i = $i + 1) {
+
+            // Mostramos el pronombre personal
+            echo $personas[$i] . ": ";
+
+            // Unimos la raiz del verbo con su terminacion
+            echo $raiz . $terminaciones[$i] . "<br>";
+        }
+    }
+
+    // Elegimos un verbo aleatorio del array
+    $posicion = array_rand($verbos);
+
+    // Guardamos el verbo elegido
+    $verbo = $verbos[$posicion];
+
+    // Quitamos las dos ultimas letras (-ar) para obtener la raiz
+    $raiz = substr($verbo, 0, -2);
+
+    // Mostramos el verbo seleccionado
+    echo "<h2>Verbo elegido: " . $verbo . "</h2>";
+
+    // Mostramos el presente
+    echo "<h3>Presente</h3>";
+    conjugar($raiz, $presente, $personas);
+
+    // Mostramos el pasado
+    echo "<h3>Pasado</h3>";
+    conjugar($raiz, $pasado, $personas);
+
+    // Mostramos el futuro
+    echo "<h3>Futuro</h3>";
+    conjugar($raiz, $futuro, $personas);
+
+    ?>
 
 </body>
 </html>
